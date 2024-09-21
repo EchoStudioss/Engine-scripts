@@ -2,7 +2,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-author 'YourName'
+author 'notspartagt' -- forgot to add. the fxmanifest!
 description 'Toggle Engine Script with G key using qb-core'
 version '1.0.2'
 
