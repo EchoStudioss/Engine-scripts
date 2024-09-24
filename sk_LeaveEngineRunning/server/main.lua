@@ -1,7 +1,38 @@
+if Config.UseOXFuel then
+    function GetFuelLevel(vehicle)
+        return Entity(vehicle).state.fuel
+    end
 
-local QBCore = exports['qb-core']:GetCoreObject()
+    function SetFuelLevel(vehicle, fuel)
+        Entity(vehicle).state.fuel = fuel
+    end
 
--- Server logic if needed, for example, fuel system integration
-if Config.UseFuelSystem then
-    -- Example server-side logic for fuel system
+elseif Config.UseLegacyFuel then
+    function GetFuelLevel(vehicle)
+        return exports['LegacyFuel']:GetFuel(vehicle)
+    end
+
+    function SetFuelLevel(vehicle, fuel)
+        exports['LegacyFuel']:SetFuel(vehicle, fuel)
+    end
+
+elseif Config.UseCDNFuel then
+    function GetFuelLevel(vehicle)
+        return exports['cdn-fuel']:GetFuel(vehicle)
+    end
+
+    function SetFuelLevel(vehicle, fuel)
+        exports['cdn-fuel']:SetFuel(vehicle, fuel)
+    end
+
+elseif Config.UsePSFuel then
+    function GetFuelLevel(vehicle)
+        return exports['ps-fuel']:GetFuel(vehicle)
+    end
+
+    function SetFuelLevel(vehicle, fuel)
+        exports['ps-fuel']:SetFuel(vehicle, fuel)
+    end
+
+  else
 end
